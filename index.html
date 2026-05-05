@@ -12,9 +12,8 @@
       scroll-behavior: smooth;
     }
 
-    /* SIDEBAR */
     .sidebar {
-      width: 250px;
+      width: 260px;
       height: 100vh;
       background-color: #4F7942;
       color: white;
@@ -22,16 +21,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 30px 20px;
     }
 
     .sidebar img {
-      width: 120px;
-      height: 120px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 20px;
-      border: 3px solid white;
     }
 
     .sidebar a {
@@ -49,13 +47,8 @@
       padding-left: 8px;
     }
 
-    .sidebar a:hover {
-      opacity: 1;
-    }
-
-    /* CONTEÚDO */
     .content {
-      margin-left: 270px;
+      margin-left: 280px;
       padding: 40px;
       max-width: 800px;
     }
@@ -77,7 +70,6 @@
       padding-bottom: 5px;
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -89,16 +81,10 @@
         height: auto;
         flex-direction: row;
         overflow-x: auto;
-        justify-content: flex-start;
       }
 
       .sidebar img {
         display: none;
-      }
-
-      .sidebar a {
-        margin: 10px;
-        white-space: nowrap;
       }
 
       .content {
@@ -111,9 +97,8 @@
 
 <body>
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <img src="sua-foto.jpg" alt="Foto">
+    <img src="assets/foto.jpg" alt="Foto Mariana">
 
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -123,42 +108,86 @@
     <a href="#social">Social</a>
   </div>
 
-  <!-- CONTEÚDO -->
   <div class="content">
 
     <section id="about">
       <h2>About</h2>
-      <p>Seu texto aqui...</p>
+      <p>
+        Atuo como Analytics Engineer com foco em reestruturar pipelines analíticos legados e torná-los escaláveis, confiáveis e governados em ambiente cloud.
+        Trabalho de ponta a ponta na construção e evolução de fluxos de dados na AWS, utilizando serviços como Lambda, Glue, Step Functions, EventBridge, RDS, S3 e Athena.
+      </p>
+      <p>
+        Meu trabalho está diretamente ligado à operação comercial, garantindo disponibilidade e qualidade de dados consumidos diariamente por milhares de usuários em todo o país.
+        Tenho interesse especial em arquitetura de dados, otimização de pipelines e evolução de plataformas analíticas.
+      </p>
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
-      <p>Seu conteúdo...</p>
+      <ul>
+        <li>SQL, Python</li>
+        <li>AWS: Lambda, Glue, EventBridge, Step Functions, RDS, S3, Athena</li>
+        <li>ETL / ELT pipelines</li>
+        <li>Modelagem de dados</li>
+        <li>Data Governance</li>
+        <li>Integração de APIs (MuleSoft, DataWeave)</li>
+      </ul>
     </section>
 
     <section id="experience">
       <h2>Experience</h2>
-      <p>Seu conteúdo...</p>
+      <ul>
+        <li>
+          <strong>Itaú Unibanco</strong> — Analytics Engineer<br>
+          nov/2021 - atual<br><br>
+          - Modernização de pipelines analíticos críticos para operação comercial<br>
+          - Transformação de processos legados em pipelines automatizados na AWS<br>
+          - Construção de bases que suportam decisões de mais de 4.000 usuários diariamente
+        </li>
+        <br>
+        <li>
+          <strong>Accenture Brasil</strong> — Analista de Software Júnior<br>
+          nov/2020 - nov/2021<br><br>
+          - Desenvolvimento de APIs com MuleSoft (Anypoint Platform)<br>
+          - Aplicação de API-led connectivity<br>
+          - Integração de sistemas e transformação de dados com DataWeave
+        </li>
+      </ul>
     </section>
 
     <section id="education">
       <h2>Education</h2>
-      <p>Seu conteúdo...</p>
+      <ul>
+        <li>
+          <strong>CESAR School</strong> (2026 - 2028)<br>
+          Tecnólogo em Banco de Dados e IA<br>
+          Formação com foco em Engenharia de Dados, Machine Learning e arquiteturas escaláveis em nuvem.
+        </li>
+        <br>
+        <li>
+          <strong>IFB - Instituto Federal de Brasília</strong> (2019 - 2020)<br>
+          Técnico em Desenvolvimento de Sistemas<br>
+          Experiência com desenvolvimento web, bancos de dados e modelagem de processos.
+        </li>
+      </ul>
     </section>
 
     <section id="certifications">
       <h2>Certifications</h2>
-      <p>Seu conteúdo...</p>
+      <ul>
+        <li>AWS Certified Cloud Practitioner</li>
+      </ul>
     </section>
 
     <section id="social">
       <h2>Social</h2>
-      <p>Seu conteúdo...</p>
+      <a href="https://www.linkedin.com/in/mariana-da-silva-219a27267/" target="_blank">
+        LinkedIn
+      </a>
     </section>
 
   </div>
 
-  <!-- JS -->
   <script>
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".sidebar a");
@@ -180,7 +209,6 @@
         }
       });
 
-      // fade-in
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight - 100) {
