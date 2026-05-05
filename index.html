@@ -2,221 +2,329 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Mariana da Silva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariana Silva | Analytics Engineer</title>
+  
+  <!-- Fontes e Ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      scroll-behavior: smooth;
+    :root {
+      --primary-green: #2D4F28;
+      --accent-green: #4F7942;
+      --text-main: #2D3436;
+      --text-muted: #636E72;
+      --bg-light: #FDFDFD;
     }
 
-    .sidebar {
-      width: 260px;
-      height: 100vh;
-      background-color: #4F7942;
-      color: white;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    /* HEADER FIXO */
+    header {
+      width: 100%;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       position: fixed;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      max-width: 900px;
+      width: 90%;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+      opacity: 0.6;
+    }
+
+    nav a:hover { opacity: 1; color: var(--accent-green); }
+
+    /* LAYOUT CENTRALIZADO */
+    .content {
+      margin-top: 70px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 20px;
-    }
-
-    .sidebar img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 0;
-      font-weight: bold;
-      opacity: 0.7;
-      transition: 0.3s;
-    }
-
-    .sidebar a.active {
-      opacity: 1;
-      border-left: 3px solid white;
-      padding-left: 8px;
-    }
-
-    .content {
-      margin-left: 280px;
-      padding: 40px;
-      max-width: 800px;
+      padding: 0 20px;
     }
 
     section {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
+      width: 100%;
+      max-width: 800px;
+      padding: 80px 0;
+      border-bottom: 1px solid #f0f0f0;
     }
 
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section:last-child { border-bottom: none; }
 
     h2 {
-      border-bottom: 2px solid #4F7942;
-      padding-bottom: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-green);
+      margin-bottom: 40px;
+      text-transform: uppercase;
     }
 
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      min-height: 70vh;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .hero-content { flex: 1; }
+
+    .hero-img {
+      width: 240px;
+      height: 240px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 15px 15px 0px var(--accent-green);
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(35px, 6vw, 65px);
+      line-height: 1;
+      margin: 0;
+    }
+
+    .light { font-weight: 300; color: var(--accent-green); }
+    .bold { font-weight: 800; color: var(--primary-green); }
+
+    .tagline { font-size: 18px; color: var(--text-muted); margin: 15px 0; }
+
+    .social-icons { display: flex; gap: 12px; margin-top: 25px; }
+    .social-icons a {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: #f1f3f5; color: var(--primary-green);
+      display: flex; align-items: center; justify-content: center;
+      transition: 0.3s; text-decoration: none; font-size: 18px;
+    }
+    .social-icons a:hover { background: var(--accent-green); color: white; transform: translateY(-3px); }
+
+    /* SKILLS ADJUSTMENTS */
+    .skill-group { margin-bottom: 30px; }
+    .skill-group h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-green); margin-bottom: 15px; }
+    .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: white; border: 1px solid #e9ecef;
+      padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    }
+    .methods-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
+    .method-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .method-item i { color: var(--accent-green); width: 20px; text-align: center; }
+
+    /* TIMELINE */
+    .timeline-item { padding-left: 25px; border-left: 2px solid #eee; margin-bottom: 40px; position: relative; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -7px; top: 5px;
+      width: 12px; height: 12px; background: var(--accent-green); border-radius: 50%;
+    }
+    .timeline-header { display: flex; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; }
+    .timeline-header h3 { margin: 0; font-size: 18px; color: var(--primary-green); font-weight: 700; }
+    .timeline-date { font-size: 12px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
+
+    /* CERTIFICATIONS */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .cert-card {
+      display: flex; align-items: center; gap: 15px; padding: 20px;
+      background: white; border: 1px solid #e9ecef; border-radius: 12px;
+      text-decoration: none; transition: 0.3s;
+    }
+    .cert-card:hover { border-color: var(--accent-green); transform: translateY(-3px); }
+    .cert-card i { font-size: 30px; color: #FF9900; }
+    .cert-info h3 { margin: 0; font-size: 15px; color: var(--text-main); font-weight: 700; }
+    .cert-info span { font-size: 12px; color: var(--accent-green); font-weight: 600; display: block; margin-top: 4px; }
+
     @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        overflow-x: auto;
-      }
-
-      .sidebar img {
-        display: none;
-      }
-
-      .content {
-        margin-left: 0;
-        padding: 20px;
-      }
+      .hero { flex-direction: column-reverse; text-align: center; padding: 60px 0; }
+      .hero-img { width: 180px; height: 180px; }
+      .social-icons { justify-content: center; }
+      nav { gap: 15px; overflow-x: auto; white-space: nowrap; }
     }
   </style>
 </head>
-
 <body>
 
-  <div class="sidebar">
-    <img src="assets/profile_picture.jpeg" alt="Foto de perfil">
-
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#social">Social</a>
-  </div>
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+    </nav>
+  </header>
 
   <div class="content">
 
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        Atuo como Analytics Engineer com foco em reestruturar pipelines analíticos legados e torná-los escaláveis, confiáveis e governados em ambiente cloud.
-        Trabalho de ponta a ponta na construção e evolução de fluxos de dados na AWS, utilizando serviços como Lambda, Glue, Step Functions, EventBridge, RDS, S3 e Athena.
-      </p>
-      <p>
-        Meu trabalho está diretamente ligado à operação comercial, garantindo disponibilidade e qualidade de dados consumidos diariamente por milhares de usuários em todo o país.
-        Tenho interesse especial em arquitetura de dados, otimização de pipelines e evolução de plataformas analíticas.
-      </p>
+    <!-- ABOUT -->
+    <section id="about" class="hero">
+      <div class="hero-content">
+        <h1>
+          <span class="light">MARIANA</span><br>
+          <span class="bold">SILVA</span>
+        </h1>
+        <p class="tagline"><strong>Analytics Engineer</strong> | Data Pipelines | AWS</p>
+        <p style="color: var(--text-muted); max-width: 500px;">
+          Atuo na construção de arquiteturas de dados escaláveis, com experiência prática no ecossistema <strong>AWS</strong>.
+        </p>
+        <div class="social-icons">
+          <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="mailto:contactmarianadasilva@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <img src="assets/profile_picture.jpeg" class="hero-img" alt="Mariana Silva">
     </section>
 
+    <!-- SKILLS (RESTAURADO) -->
     <section id="skills">
       <h2>Skills</h2>
-      <ul>
-        <li>SQL, Python</li>
-        <li>AWS: Lambda, Glue, EventBridge, Step Functions, RDS, S3, Athena</li>
-        <li>ETL / ELT pipelines</li>
-        <li>Modelagem de dados</li>
-        <li>Data Governance</li>
-        <li>Integração de APIs (MuleSoft, DataWeave)</li>
-      </ul>
+
+      <div class="skill-group">
+        <h3>Top Cloud Providers</h3>
+        <div class="skills-container">
+          <div class="skill-badge"><i class="devicon-amazonwebservices-plain"></i> AWS</div>
+          <div class="skill-badge"><i class="devicon-googlecloud-plain"></i> Google Cloud</div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Languages & Tools</h3>
+        <div class="skills-container">
+          <div class="skill-badge"><i class="devicon-python-plain"></i> Python</div>
+          <div class="skill-badge"><i class="devicon-java-plain"></i> Java</div>
+          <div class="skill-badge"><i class="devicon-javascript-plain"></i> JavaScript</div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Tooling & Platforms</h3>
+        <div class="skills-container">
+          <div class="skill-badge"><i class="devicon-git-plain"></i> Git</div>
+          <div class="skill-badge"><i class="devicon-docker-plain"></i> Docker</div>
+          <div class="skill-badge"><i class="devicon-terraform-plain"></i> Terraform</div>
+          <div class="skill-badge"><i class="devicon-kubernetes-plain"></i> Kubernetes</div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Databases</h3>
+        <div class="skills-container">
+          <div class="skill-badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</div>
+          <div class="skill-badge"><i class="devicon-mysql-plain"></i> MySQL</div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Methodologies & Frameworks</h3>
+        <div class="methods-grid">
+          <div class="method-item"><i class="fas fa-database"></i> Data Modeling</div>
+          <div class="method-item"><i class="fas fa-exchange-alt"></i> ETL / ELT Pipelines</div>
+          <div class="method-item"><i class="fas fa-eye"></i> Data Quality</div>
+          <div class="method-item"><i class="fas fa-project-diagram"></i> Event-Driven Architecture</div>
+          <div class="method-item"><i class="fas fa-shield-alt"></i> Data Governance</div>
+          <div class="method-item"><i class="fas fa-chart-line"></i> Cost Optimization (AWS)</div>
+        </div>
+      </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience">
       <h2>Experience</h2>
-      <ul>
-        <li>
-          <strong>Itaú Unibanco</strong> — Analytics Engineer<br>
-          nov/2021 - atual<br><br>
-          - Modernização de pipelines analíticos críticos para operação comercial<br>
-          - Transformação de processos legados em pipelines automatizados na AWS<br>
-          - Construção de bases que suportam decisões de mais de 4.000 usuários diariamente
-        </li>
-        <br>
-        <li>
-          <strong>Accenture Brasil</strong> — Analista de Software Júnior<br>
-          nov/2020 - nov/2021<br><br>
-          - Desenvolvimento de APIs com MuleSoft (Anypoint Platform)<br>
-          - Aplicação de API-led connectivity<br>
-          - Integração de sistemas e transformação de dados com DataWeave
-        </li>
-      </ul>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Itaú Unibanco — Analytics Engineer</h3>
+          <span class="timeline-date">nov/2021 - atual</span>
+        </div>
+        <ul>
+          <li>Modernização de pipelines analíticos críticos.</li>
+          <li>Transformação de processos legados na AWS.</li>
+          <li>Impacto em 4.000+ usuários diários.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Accenture Brasil — Analista de Software Jr</h3>
+          <span class="timeline-date">nov/2020 - nov/2021</span>
+        </div>
+        <ul>
+          <li>Desenvolvimento de APIs com MuleSoft.</li>
+          <li>Integração de sistemas e DataWeave.</li>
+        </ul>
+      </div>
     </section>
 
+    <!-- EDUCATION -->
     <section id="education">
       <h2>Education</h2>
-      <ul>
-        <li>
-          <strong>CESAR School</strong> (2026 - 2028)<br>
-          Tecnólogo em Banco de Dados e IA<br>
-          Formação com foco em Engenharia de Dados, Machine Learning e arquiteturas escaláveis em nuvem.
-        </li>
-        <br>
-        <li>
-          <strong>IFB - Instituto Federal de Brasília</strong> (2019 - 2020)<br>
-          Técnico em Desenvolvimento de Sistemas<br>
-          Experiência com desenvolvimento web, bancos de dados e modelagem de processos.
-        </li>
-      </ul>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>CESAR School</h3>
+          <span class="timeline-date">2026 - 2028</span>
+        </div>
+        <p><strong>Tecnólogo em Banco de Dados e IA</strong></p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>IFB - Instituto Federal de Brasília</h3>
+          <span class="timeline-date">2019 - 2020</span>
+        </div>
+        <p><strong>Técnico em Desenvolvimento de Sistemas</strong></p>
+      </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
     <section id="certifications">
       <h2>Certifications</h2>
-      <ul>
-        <li>AWS Certified Cloud Practitioner</li>
-      </ul>
-    </section>
-
-    <section id="social">
-      <h2>Social</h2>
-      <a href="https://www.linkedin.com/in/mariana-da-silva-219a27267/" target="_blank">
-        LinkedIn
-      </a>
+      <div class="cert-grid">
+        <a href="https://www.credly.com/badges/2d224429-6b3e-431c-990e-d6f6c327ea45/public_url" target="_blank" class="cert-card">
+          <i class="fab fa-aws"></i>
+          <div class="cert-info">
+            <h3>AWS Certified Cloud Practitioner</h3>
+            <span>Ver Credencial <i class="fas fa-external-link-alt" style="font-size: 10px;"></i></span>
+          </div>
+        </a>
+      </div>
     </section>
 
   </div>
-
-  <script>
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".sidebar a");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
-
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          section.classList.add("show");
-        }
-      });
-    });
-  </script>
-
 </body>
 </html>
